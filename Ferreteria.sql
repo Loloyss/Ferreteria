@@ -4,41 +4,14 @@ create table poblaciones (
     poblacion varchar (30) not null,
     provincia varchar(25) not null
 );
-
-create table clientes (
-    codigo char(4) primary key,
-    nombre varchar (40) not null,
-    direccion varchar(50) not null,
-    sexo char,
-    dni varchar(10) not null,
-    fecha_alta date not null,
-    telefono varchar(14),
-    cod_postal char(5) not null references poblaciones
-  );
-
-create table proveedores (
-    CIF varchar(10) primary key,
-    razon_soc varchar (40) not null,
-    direccion varchar(50) not null,
-    cod_postal char(5) not null references poblaciones on delete cascade
-);
-create table sucursales (
-    cif varchar(10) not null references proveedores on delete cascade,
-    cod_postal char(5)  not null references poblaciones,
-    direccion varchar(50) not null,
-    constraint clave_sucursales primary key (cif,cod_postal));
-create table premios (
-    cif varchar(10) not null references proveedores on delete cascade,
-    premio varchar(40) primary key
-);
 create table articulos (
-    cod_art char(2) not null,
-    ref_art char(3) not null,
-    denomina varchar(30) not null unique,
-    precio float not null check (precio >=0.1 and precio < 1000),
-    descuento float check (descuento >=0 and descuento <51),
-    constraint clave_articulos primary key (cod_art,ref_art),
-    constraint precio_mayor_dscto check (precio>descuento)
+   cod_art char(2) not null,
+   ref_art char(3) not null,
+   denomina varchar(30) not null unique,
+   precio float not null check (precio >=0.1 and precio < 1000),
+   descuento float check (descuento >=0 and descuento <51),
+   constraint clave_articulos primary key (cod_art,ref_art),
+   constraint precio_mayor_dscto check (precio>descuento)
 );
 create table medidas(
     codigo char(2) not null,
@@ -47,9 +20,8 @@ create table medidas(
     stock smallint not null check (stock >= 0 and stock < 1000),
     constraint clave_medidas primary key (codigo,referencia,medida),
     constraint clave_ajena_medidas
-    foreign key (codigo,referencia) references articulos(cod_art,ref_art) on delete cascade
+        foreign key (codigo,referencia) references articulos(cod_art,ref_art) on delete cascade
 );
-
 create table compras (
     cod_cli char(4) not null references clientes,
     cod_art char(2) not null,
@@ -63,6 +35,43 @@ create table compras (
     constraint ajena_compras_medidas foreign key(cod_art,referencia,medida)
     references medidas(codigo,referencia,medida)
 );
+
+create table clientes (
+    codigo char(4) primary key,
+    nombre varchar (40) not null,
+    direccion varchar(50) not null,
+    sexo char,
+    dni varchar(10) not null,
+    fecha_alta date not null,
+    telefono varchar(14),
+    cod_postal char(5) not null references poblaciones,
+    FOREIGN KEY (codigo)REFERENCES compras(cod_cli),
+    FOREIGN KEY (cod_postal)REFERENCES poblaciones(cod_postal)
+  );
+
+create table proveedores (
+    CIF varchar(10) primary key,
+    razon_soc varchar (40) not null,
+    direccion varchar(50) not null,
+    cod_postal char(5) not null references poblaciones on delete cascade,
+    FOREIGN KEY (cod_postal) REFERENCES poblaciones(cod_postal)
+);
+
+create table sucursales (
+    cif varchar(10) not null references proveedores on delete cascade,
+    cod_postal char(5)  not null references poblaciones,
+    direccion varchar(50) not null,
+    constraint clave_sucursales primary key (cif,cod_postal),
+    FOREIGN KEY (cif)REFERENCES proveedores(CIF),
+    FOREIGN KEY (cod_postal)REFERENCES proveedores(cod_postal)
+);
+
+create table premios (
+    cif varchar(10) not null references proveedores on delete cascade,
+    premio varchar(40) primary key,
+    FOREIGN KEY (cif)REFERENCES proveedores(CIF)
+);
+
 
 create table suministros (
     cif_pro varchar(10) not null references proveedores on delete cascade,
@@ -119,4 +128,3 @@ insert into compras values ('0003','MA','001','unica','23/03/2014',4);
 insert into suministros values ('11111111B','MA','001','unico','21/03/2014',10,20);
 insert into suministros values ('11111111A','MB','002','unica','25/04/2014',20,18);
 insert into suministros values ('22222222B','MC','003','unica','23/03/2014',30,17);
-
