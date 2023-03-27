@@ -1,0 +1,4 @@
+package Clientes
+
+interface ClientesDAO {
+}

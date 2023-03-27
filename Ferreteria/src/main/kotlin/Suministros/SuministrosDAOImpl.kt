@@ -1,0 +1,4 @@
+package Suministros
+
+class SuministrosDAOImpl {
+}

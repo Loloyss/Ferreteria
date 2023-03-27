@@ -1,0 +1,4 @@
+package Poblaciones
+
+interface PoblacionesDAO {
+}

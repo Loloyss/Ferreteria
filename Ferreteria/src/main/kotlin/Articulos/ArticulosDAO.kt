@@ -1,0 +1,4 @@
+package Articulos
+
+interface ArticulosDAO {
+}

@@ -1,0 +1,4 @@
+package Premios
+
+interface PremiosDAO {
+}

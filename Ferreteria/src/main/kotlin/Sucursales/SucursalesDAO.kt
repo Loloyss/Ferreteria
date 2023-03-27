@@ -1,0 +1,4 @@
+package Sucursales
+
+interface SucursalesDAO {
+}

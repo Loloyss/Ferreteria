@@ -1,0 +1,4 @@
+package Medidas
+
+interface MedidasDAO {
+}

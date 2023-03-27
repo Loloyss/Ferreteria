@@ -1,0 +1,4 @@
+package Proveedores
+
+class ProveedoresDAOImpl {
+}
