@@ -70,7 +70,7 @@ class MedidasDAOImpl: MedidasDAO {
             ps?.setString(1, medidas.codigo )
             ps?.setString(2,medidas.referencia)
             ps?.setString(3, medidas.medida)
-            ps?.setInt(6, medidas.stock)
+            ps?.setInt(4, medidas.stock)
             var st = ps?.executeUpdate()
 
         }catch (e: Exception){
