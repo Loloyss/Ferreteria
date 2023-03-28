@@ -31,7 +31,7 @@ class PoblacionesDAOImpl: PoblacionesDAO {
         return arrPbl
     }
 
-    override fun getPoblacioneyID(id: String): Poblaciones? {
+    override fun getPoblacionesyID(id: String): Poblaciones? {
 
         var pbl: Poblaciones ?= null
         conexion.conectar()
@@ -58,7 +58,7 @@ class PoblacionesDAOImpl: PoblacionesDAO {
     override fun insertPoblaciones(Poblaciones: Poblaciones): Boolean {
         conexion.conectar()
 
-        var query = "insert into compras values (?, ?, ?, ?)"
+        var query = "insert into compras values (?, ?, ?)"
 
         var ps = conexion.getPreparedStatement(query)
 
@@ -78,8 +78,28 @@ class PoblacionesDAOImpl: PoblacionesDAO {
         return true
     }
 
-    override fun insertArr(arrCompras: ArrayList<Poblaciones>): Boolean {
+    override fun insertArr(arrPoblaciones: ArrayList<Poblaciones>): Boolean {
+        conexion.conectar()
 
-        return false
+        var query = "insert into compras values (?, ?, ?)"
+
+        var ps = conexion.getPreparedStatement(query)
+
+        try {
+            for (i in arrPoblaciones){
+
+                ps?.setString(1, i.cod_postal)
+                ps?.setString(2,i.poblacion)
+                ps?.setString(3, i.provincia)
+                var st = ps?.executeUpdate()
+            }
+        }catch (e: Exception){
+            println(e)
+        }
+
+        ps?.close()
+        conexion.desconectar()
+
+        return true
     }
 }
