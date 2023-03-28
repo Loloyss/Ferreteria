@@ -2,6 +2,7 @@ package Articulos
 
 import ConexionBD
 import Constantes
+import java.sql.PreparedStatement
 
 class ArticulosDAOImpl : ArticulosDAO {
 
@@ -25,19 +26,77 @@ class ArticulosDAOImpl : ArticulosDAO {
             var arti = Articulos(cod_art, ref_art, denomina, precio, descuento)
             artcRtn.add(arti)
         }
+        ps?.close()
         conexion.desconectar()
         return artcRtn
     }
 
-    override fun getArticuloByID(id: Int): ArrayList<Articulos> {
-        TODO("Not yet implemented")
+    override fun getArticuloByID(id: Int): Articulos {
+        conexion.conectar()
+
+        var query = "SELECT * FROM ARTICULOS WHERE = ?"
+
+        var ps = conexion?.getPreparedStatement(query)
+
+        ps?.setInt(1, id)
+        var artRtn: Articulos? = null
+
+        var st = ps?.executeQuery()
+        while (st!!.next()) {
+            var cod_art = st.getString("cod_art")
+            var ref_art = st.getString("ref_art")
+            var denomina = st.getString("denomina")
+            var precio = st.getInt("precio")
+            var descuento = st.getInt("descuento")
+
+            artRtn = Articulos(cod_art, ref_art, denomina, precio, descuento)
+        }
+
+        ps?.close()
+        conexion.desconectar()
+        return artRtn!!
     }
 
     override fun insertArticulo(articulo: Articulos): Boolean {
-        TODO("Not yet implemented")
+        conexion.conectar()
+
+        var query = "insert into articulos values (?, ?, ?, ?, ?)"
+
+        var ps = conexion.getPreparedStatement(query)
+        var st = ps?.executeUpdate()
+
+        ps?.setString(1,articulo.cod_art)
+        ps?.setString(2,articulo.ref_art)
+        ps?.setString(3, articulo.denomina)
+        ps?.setInt(4, articulo.precio)
+        ps?.setInt(5, articulo.descuento)
+
+        ps?.close()
+        conexion.desconectar()
+
+        return st == 1
     }
 
-    override fun insertArrArticulo(arrArticulo: Articulos): ArrayList<Articulos> {
-        TODO("Not yet implemented")
+    override fun insertArrArticulo(arrArticulo: ArrayList<Articulos>): Boolean{
+        conexion.conectar()
+        var arrArt = false
+
+        var query = "insert into articulos values (?, ?, ?, ?, ?)"
+        var ps = conexion.getPreparedStatement(query)
+        var st: PreparedStatement ?= null
+
+        for (i in arrArticulo){
+            ps?.setString(1,i.cod_art)
+            ps?.setString(2,i.ref_art)
+            ps?.setString(3, i.denomina)
+            ps?.setInt(4, i.precio)
+            ps?.setInt(5, i.descuento)
+            var st = ps?.executeUpdate()
+        }
+
+        ps?.close()
+        conexion.desconectar()
+
+        return true
     }
 }
