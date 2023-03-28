@@ -12,7 +12,7 @@ Para ejecutar este proyecto, es necesario tener instalado lo siguiente:
 1. Clonar el repositorio a través del comando:
 
 ```bash
-git clone https://github.com/TuUsuario/proyecto-ferreteria.git
+git clone https://github.com/Loloyss/Ferreteria/
 ````
 2. Configurar la conexión a la base de datos modificando el archivo src/main/kotlin/Conexion.kt con los datos de su servidor MySQL.
 
