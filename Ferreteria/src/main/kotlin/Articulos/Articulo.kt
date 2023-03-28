@@ -1,4 +1,0 @@
-package Articulos
-
-class Articulo {
-}

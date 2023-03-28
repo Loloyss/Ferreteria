@@ -5,7 +5,5 @@ class Constantes {
         val password=""
         val forname="com.mysql.cj.jdbc.Driver"
 
-
-
     }
 }

@@ -1,7 +1,11 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import Articulos.ArticulosDAOImpl
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun main(args: Array<String>) {
+    var test = ArticulosDAOImpl()
+
+    var arti = test.getArticulos()
+
+    for (i in arti){
+        println(i)
+    }
 }
