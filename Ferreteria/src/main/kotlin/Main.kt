@@ -1,11 +1,15 @@
 import Articulos.ArticulosDAOImpl
+import Clientes.ClientesDAOImpl
+
+/**
+* @author Francisco, Javier, Badrelddin
+* */
 
 fun main(args: Array<String>) {
-    var test = ArticulosDAOImpl()
+    var test = ClientesDAOImpl()
 
-    var arti = test.getArticulos()
+    var arti = test.getClienteByID("0001")
 
-    for (i in arti){
-        println(i)
-    }
+    println(arti)
+
 }
