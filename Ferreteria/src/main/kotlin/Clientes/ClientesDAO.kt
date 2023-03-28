@@ -1,7 +1,6 @@
 package Clientes
 
 import Articulos.Articulos
-import Compras.Compras
 
 
 interface ClientesDAO {
