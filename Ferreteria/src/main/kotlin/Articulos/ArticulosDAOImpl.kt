@@ -31,15 +31,16 @@ class ArticulosDAOImpl : ArticulosDAO {
         return artcRtn
     }
 
-    override fun getArticuloByID(id: Int): Articulos {
+    override fun getArticuloByID(vcod_art: String, vref_art: String): Articulos {
         conexion.conectar()
 
-        var query = "SELECT * FROM ARTICULOS WHERE = ?"
+        var query = "SELECT * FROM ARTICULOS WHERE cod_art= ? and ref_art= ?"
 
         var ps = conexion?.getPreparedStatement(query)
 
-        ps?.setInt(1, id)
-        var artRtn: Articulos? = null
+        ps?.setString(1, vcod_art)
+        ps?.setString(2, vref_art)
+        var vartRtn: Articulos? = null
 
         var st = ps?.executeQuery()
         while (st!!.next()) {

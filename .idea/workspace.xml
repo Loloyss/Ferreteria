@@ -4,30 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70d5471d-4b33-483b-926d-b3283c8fd8a7" name="Changes" comment="" />
+    <list default="true" id="5c09a868-90fa-44ee-8339-d90cee717a76" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ferreteria/src/main/kotlin/Articulos/ArticulosDAOImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Ferreteria/src/main/kotlin/Articulos/ArticulosDAOImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ferreteria/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/Ferreteria/src/main/kotlin/Main.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectId" id="2NHp8tHXm7OYR996eE4vUWpIZ13" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2NevIRAvY7hE0WiQx5Z3z1yrhzF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.OpenDatabaseViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/cohet/Documents/FPGS/Entornos/Proyecto_Entornos_FBJJ/BBDD_Ferreteria",
-    "settings.editor.selected.configurable": "vcs.Git"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
-    ]
+    "last_opened_file_path": "C:/Users/Usuario/Desktop/Ferriteria/Ferreteria/Ferreteria"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5c09a868-90fa-44ee-8339-d90cee717a76" name="Changes" comment="" />
+      <created>1680037285084</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680037285084</updated>
+    </task>
+    <servers />
+  </component>
 </project>

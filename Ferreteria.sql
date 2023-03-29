@@ -1,4 +1,3 @@
-USE ferreteria;
 create table poblaciones (
     cod_postal char(5) primary key,
     poblacion varchar (30) not null,
@@ -91,23 +90,6 @@ insert into poblaciones values ('13500','Puertollano','Ciudad Real');
 insert into poblaciones values ('45001','Toledo','Toledo');
 insert into poblaciones values ('28002','Parla','Madrid');
 
-insert into clientes values ('0001','Javier Gallego Hurtado','C/Ferrocarril, 1','V','11111111','1/9/2013','926111111','13300');
-insert into clientes values ('0002','Cristina Parra Mellado','C/Mesta, 2','M','22222222','2/9/2013','926222222','13300');
-insert into clientes values ('0003','Jose Lopez Mora','C/Tomillo, 3','V','33333333','3/9/2013','926333333','13500');
-insert into clientes values ('0004','Javier Nieto Prado','C/Azucena, 4','V','44444444','4/9/2013','926444444','13500');
-insert into clientes values ('0005','Ana Ruiz Torres','C/Geranio, 5','M','55555555','5/9/2013','926555555','13500');
-insert into clientes values ('0006','Luisa Megia Barrio','C/Cencibel, 6','M','66666666','6/9/2013','926666666','13300');
-
-insert into proveedores values ('11111111A','SUMINISTROS LA MANCHA','C/Obispo, 11','45001');
-insert into proveedores values ('22222222B','FERRETERIAS INDUSTRIALES','C/Castillo, 22','28002');
-insert into proveedores values ('33333333C','INDUSTRIAL TOLEDANA','C/Libertad, 33','45001');
-
-insert into sucursales values ('11111111A','13500','Paseo San Gregorio, 82');
-insert into sucursales values ('11111111A','13300','Real, 2');
-
-insert into premios values ('11111111A','Calidad 2010');
-insert into premios values ('11111111A','Calidad 2011');
-
 insert into articulos values ('TO','001','Tornillos de rosca-chapa',0.2,0);
 insert into articulos values ('TO','002','Tornillos de punta',0.5,0);
 insert into articulos values ('MA','001','Martillo mango madera',20,0);
@@ -119,12 +101,32 @@ insert into medidas values ('TO','002','10 mm.',210);
 insert into medidas values ('TO','002','20 mm.',220);
 insert into medidas values ('MA','001','unica',30);
 
+
+insert into proveedores values ('11111111A','SUMINISTROS LA MANCHA','C/Obispo, 11','45001');
+insert into proveedores values ('22222222B','FERRETERIAS INDUSTRIALES','C/Castillo, 22','28002');
+insert into proveedores values ('33333333C','INDUSTRIAL TOLEDANA','C/Libertad, 33','45001');
+
+insert into premios values ('11111111A','Calidad 2010');
+insert into premios values ('11111111A','Calidad 2011');
+
+insert into suministros values ('11111111A','MA','001','unica','21/03/2014',10,20);
+insert into suministros (cif_pro,cod_art,referencia,medida,unidades,precio) values ('11111111A','MA','001','unica',20,18);
+insert into suministros values ('22222222B','MA','001','unica','23/03/2014',30,17);
+insert into suministros values ('22222222B','TO','001','10 mm.','23/03/2014',100,05);
+insert into suministros values ('22222222B','TO','002','10 mm.','23/03/2014',100,08);
+
+
 insert into compras values ('0001','MA','001','unica','23/03/2014',1);
 insert into compras values ('0002','TO','002','10 mm.','23/03/2014',10);
 insert into compras values ('0002','TO','002','20 mm.','23/03/2014',20);
 insert into compras values ('0003','MA','001','unica','23/03/2014',4);
 
+insert into clientes values ('0001','Javier Gallego Hurtado','C/Ferrocarril, 1','V','11111111','1/9/2013','926111111','13300');
+insert into clientes values ('0002','Cristina Parra Mellado','C/Mesta, 2','M','22222222','2/9/2013','926222222','13300');
+insert into clientes values ('0003','Jose Lopez Mora','C/Tomillo, 3','V','33333333','3/9/2013','926333333','13500');
 
-insert into suministros values ('11111111B','MA','001','unico','21/03/2014',10,20);
-insert into suministros values ('11111111A','MB','002','unica','25/04/2014',20,18);
-insert into suministros values ('22222222B','MC','003','unica','23/03/2014',30,17);
+
+insert into sucursales values ('11111111A','45001','Paseo San Gregorio, 82');
+insert into sucursales values ('22222222B','28002','Real, 2');
+
+
