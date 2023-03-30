@@ -1,6 +1,6 @@
 package Compras
 
-class Medidas {
+class Compras {
 
     var cod_cli = ""
     var cod_art = ""

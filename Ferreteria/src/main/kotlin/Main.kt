@@ -3,7 +3,7 @@ import Articulos.ArticulosDAOImpl
 import Clientes.Clientes
 import Clientes.ClientesDAOImpl
 import Compras.ComprasDAOImpl
-import Compras.Medidas
+import Compras.Compras
 import Medidas.Medidas
 import Medidas.MedidasDAOImpl
 import Poblaciones.PoblacionesDAOImpl
@@ -30,6 +30,7 @@ fun main() {
             var tabla = "articulos"
             var choice = elecion(tabla)
             var test = ArticulosDAOImpl()
+            var test2= ComprasDAOImpl()
             when (choice){
                 1->{
                    /* var emple = test.getArticulos()
@@ -55,14 +56,34 @@ fun main() {
                     var cod_art = readln()
                     println("Para modificar un registro necesitas introducir la referencia del artículo: ")
                     var ref_art = readln()
-
-                    println(test.getArticulos(cod_art,ref_art))
+                    var articulo:Articulos=test.getArticuloByID(cod_art,ref_art)
+                    println(articulo.toString())
+                    println("Insertar la nueva denominacion del articulo: (antigua denominacio):${articulo.denomina}")
+                    var denominacion = readln()
+                    println("Insertar la nuevo precio del articulo: (antiguo precio):${articulo.precio}")
+                    var precio = readln().toInt()
+                    println("Insertar la nuevo descuento del articulo: (antiguo descuento):${articulo.descuento}")
+                    var descuento = readln().toInt()
+                    articulo.denomina=denominacion
+                    articulo.precio= precio
+                    articulo.descuento= descuento
+                    test.modificarArticulo(articulo)
+                    var art = test.getArticulos()
+                    for (i in art){
+                        println(i.toString())
+                    }
                 }
                 5 -> {
-                    /*var search = buscar()
-                    var borrado = test.deleteEmpleado(search)
-                    borrar(borrado)*/
-
+                    println("Para borrar un registro necesitas introducir el código del artículo: ")
+                    var cod_art = readln()
+                    println("Para borrar un registro necesitas introducir la referencia del artículo: ")
+                    var ref_art = readln()
+                    test2.eliminarCompraByart(cod_art,ref_art)
+                    test.eliminarArticulo(cod_art,ref_art)
+                    var art = test.getArticulos()
+                    for (i in art){
+                        println(i.toString())
+                    }
                 }
                 else -> {
                     println("elección incorrecta")
