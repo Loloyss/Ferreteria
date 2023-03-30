@@ -4,9 +4,8 @@ class Articulos {
     var cod_art = ""
     var ref_art = ""
     var denomina = ""
-    var precio = 0
-    var descuento = 0
-
+    var precio:Int
+    var descuento:Int
     constructor(cod_art: String, ref_art:String, denomina:String, precio: Int, descuento: Int){
         this.cod_art = cod_art
         this.ref_art = ref_art

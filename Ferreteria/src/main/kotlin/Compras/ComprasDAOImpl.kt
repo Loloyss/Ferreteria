@@ -7,10 +7,10 @@ import Constantes
 class ComprasDAOImpl : ComprasDAO {
 
     var conexion = ConexionBD(Constantes.url, Constantes.user, Constantes.password)
-    override fun getCompras(): ArrayList<Medidas> {
+    override fun getCompras(): ArrayList<Compras> {
         conexion.conectar()
 
-        var compra = ArrayList<Medidas>()
+        var compra = ArrayList<Compras>()
         var query = "SELECT * FROM COMPRAS"
         var ps = conexion.getPreparedStatement(query)
         var st = ps?.executeQuery()
@@ -22,7 +22,7 @@ class ComprasDAOImpl : ComprasDAO {
             var medida = st.getString("medida")
             var fecha = st.getString("fecha")
             var unidades = st.getInt("unidades")
-            var com = Medidas(cod_art, cod_cli, referencia, medida, fecha, unidades)
+            var com = Compras(cod_art, cod_cli, referencia, medida, fecha, unidades)
             compra.add(com)
         }
 
@@ -31,10 +31,10 @@ class ComprasDAOImpl : ComprasDAO {
         return compra
     }
 
-    override fun getComprasByID(id: String): Medidas? {
+    override fun getComprasByID(id: String): Compras? {
         conexion.conectar()
 
-        var compra: Medidas ?= null
+        var compra: Compras ?= null
         var query = "SELECT * FROM COMPRAS"
         var ps = conexion.getPreparedStatement(query)
         var st = ps?.executeQuery()
@@ -46,7 +46,7 @@ class ComprasDAOImpl : ComprasDAO {
             var medida = st.getString("medida")
             var fecha = st.getString("fecha")
             var unidades = st.getInt("unidades")
-            var compra = Medidas(cod_art, cod_cli, referencia, medida, fecha, unidades)
+            var compra = Compras(cod_art, cod_cli, referencia, medida, fecha, unidades)
         }
 
         ps?.close()
@@ -54,7 +54,7 @@ class ComprasDAOImpl : ComprasDAO {
         return compra
     }
 
-    override fun insertCompras(Compras: Medidas): Boolean {
+    override fun insertCompras(Compras: Compras): Boolean {
         conexion.conectar()
 
         var query = "insert into compras values (?, ?, ?, ?, ?, ?)"
@@ -80,7 +80,7 @@ class ComprasDAOImpl : ComprasDAO {
         return true
     }
 
-    override fun insertArrCompras(arrArticulo: ArrayList<Medidas>): Boolean {
+    override fun insertArrCompras(arrArticulo: ArrayList<Compras>): Boolean {
         conexion.conectar()
 
         var query = "insert into compras values (?, ?, ?, ?, ?, ?)"
@@ -106,5 +106,22 @@ class ComprasDAOImpl : ComprasDAO {
         conexion.desconectar()
 
         return true
+    }
+    override fun eliminarCompraByart(cod_art:String,ref_art:String):Boolean{
+        conexion.conectar()
+
+        val query = "DELETE FROM compras WHERE cod_art = ? AND cod_ref = ?"
+
+        var ps = conexion.getPreparedStatement(query)
+        var st = ps?.executeUpdate()
+
+        ps?.setString(1,cod_art)
+        ps?.setString(2,ref_art)
+
+
+        ps?.close()
+        conexion.desconectar()
+
+        return st == 1
     }
 }

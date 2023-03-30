@@ -40,7 +40,7 @@ class ArticulosDAOImpl : ArticulosDAO {
 
         ps?.setString(1, vcod_art)
         ps?.setString(2, vref_art)
-        var vartRtn: Articulos? = null
+        var artRtn: Articulos? = null
 
         var st = ps?.executeQuery()
         while (st!!.next()) {
@@ -99,5 +99,41 @@ class ArticulosDAOImpl : ArticulosDAO {
         conexion.desconectar()
 
         return true
+    }
+    override fun modificarArticulo(articulo: Articulos): Boolean {
+        conexion.conectar()
+
+        val query = "UPDATE articulos SET denominacion = ? , precio = ? , descuento = ? WHERE cod_art = ? AND cod_ref = ?"
+
+        var ps = conexion.getPreparedStatement(query)
+        var st = ps?.executeUpdate()
+
+        ps?.setString(1,articulo.denomina)
+        ps?.setInt(2, articulo.precio)
+        ps?.setInt(3, articulo.descuento)
+        ps?.setString(4, articulo.cod_art)
+        ps?.setString(5, articulo.ref_art)
+
+        ps?.close()
+        conexion.desconectar()
+
+        return st == 1
+    }
+    override fun eliminarArticulo(cod_art :String,ref_art:String): Boolean {
+        conexion.conectar()
+
+        val query = "DELETE FROM articulos WHERE cod_art = ? AND cod_ref = ?"
+
+        var ps = conexion.getPreparedStatement(query)
+        var st = ps?.executeUpdate()
+
+        ps?.setString(1,cod_art)
+        ps?.setString(2,ref_art)
+
+
+        ps?.close()
+        conexion.desconectar()
+
+        return st == 1
     }
 }
