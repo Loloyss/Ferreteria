@@ -1,18 +1,6 @@
 import Articulos.Articulos
 import Articulos.ArticulosDAOImpl
-import Clientes.Clientes
-import Clientes.ClientesDAOImpl
 import Compras.ComprasDAOImpl
-import Compras.Compras
-import Medidas.Medidas
-import Medidas.MedidasDAOImpl
-import Poblaciones.PoblacionesDAOImpl
-import Premios.Premios
-import Premios.PremiosDAOImpl
-import Proveedores.Proveedores
-import Proveedores.ProveedoresDAOImpl
-import Sucursales.SucursalesDAOImpl
-import Suministros.Suministros
 import Suministros.SuministrosDAOImpl
 
 fun main() {
@@ -33,23 +21,33 @@ fun main() {
             var test2= ComprasDAOImpl()
             when (choice){
                 1->{
-                   /* var emple = test.getArticulos()
-                    for (i in emple){
+                    var select = test.getArticulos()
+                    for (i in select)
                         println(i)
-                    }*/
+
                 }
                 2->{
-                    /*var search = buscar()
-                    println(test.getArticulos(search))*/
+                    var select = test.getArticulos()
+                    for (i in select){
+                        println(i)}
+
+                    var search = buscar("")
+                    var ref_art = buscar("ref_art")
+                    println(test.getArticuloByID(search.toString(),ref_art.toString()))
                 }
                 3->{
-                   /* println("Para realizar el insert se necesita un DNI: ")
-                    var dni = readln().toInt()
-                    println("El puesto: ")
-                    var puesto = readln().toInt()
-                    println("El nombreo: ")
-                    var nombre = readln()
-                    test.insertArticulo(dni,puesto,nombre)*/
+                   println("Para realizar el insert se necesita un código de articulo: ")
+                    var cod_art = readln()
+                    println("se necesita la referencia del articulo: ")
+                    var ref_art = readln()
+                    println("La denominación: ")
+                    var denomina = readln()
+                    println("El precio: ")
+                    var precio = readln().toFloat()
+                    println("El descuento: ")
+                    var descuento = readln().toFloat()
+                    var articulo = Articulos(cod_art, ref_art, denomina, precio, descuento)
+                    test.insertArticulo(articulo)
                 }
                 4->{
                     println("Para modificar un registro necesitas introducir el código del artículo: ")
@@ -65,8 +63,8 @@ fun main() {
                     println("Insertar la nuevo descuento del articulo: (antiguo descuento):${articulo.descuento}")
                     var descuento = readln().toInt()
                     articulo.denomina=denominacion
-                    articulo.precio= precio
-                    articulo.descuento= descuento
+                    articulo.precio= precio.toFloat()
+                    articulo.descuento= descuento.toFloat()
                     test.modificarArticulo(articulo)
                     var art = test.getArticulos()
                     for (i in art){
@@ -110,13 +108,15 @@ fun elecion(tabla:String):Int{
     return choice
 }
 
-/*fun buscar():Int{
+fun buscar(arg:String):String{
 
+    if (arg.isEmpty())
     println("Indica el ID:")
-
-    var x = readln().toInt()
+    else
+        println("Indica el $arg:")
+    var x = readln()
     return x
-}*/
+}
 
 /*fun borrar(borrado:Boolean){
     if (borrado){

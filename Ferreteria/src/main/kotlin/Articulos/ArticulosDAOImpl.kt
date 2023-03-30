@@ -20,8 +20,8 @@ class ArticulosDAOImpl : ArticulosDAO {
             var cod_art = st.getString("cod_art")
             var ref_art = st.getString("ref_art")
             var denomina = st.getString("denomina")
-            var precio = st.getInt("precio")
-            var descuento = st.getInt("descuento")
+            var precio = st.getFloat("precio")
+            var descuento = st.getFloat("descuento")
 
             var arti = Articulos(cod_art, ref_art, denomina, precio, descuento)
             artcRtn.add(arti)
@@ -31,15 +31,15 @@ class ArticulosDAOImpl : ArticulosDAO {
         return artcRtn
     }
 
-    override fun getArticuloByID(vcod_art: String, vref_art: String): Articulos {
+    override fun getArticuloByID(cod_art: String, ref_art: String): Articulos {
         conexion.conectar()
 
         var query = "SELECT * FROM ARTICULOS WHERE cod_art= ? and ref_art= ?"
 
         var ps = conexion?.getPreparedStatement(query)
 
-        ps?.setString(1, vcod_art)
-        ps?.setString(2, vref_art)
+        ps?.setString(1, cod_art)
+        ps?.setString(2, ref_art)
         var artRtn: Articulos? = null
 
         var st = ps?.executeQuery()
@@ -47,8 +47,8 @@ class ArticulosDAOImpl : ArticulosDAO {
             var cod_art = st.getString("cod_art")
             var ref_art = st.getString("ref_art")
             var denomina = st.getString("denomina")
-            var precio = st.getInt("precio")
-            var descuento = st.getInt("descuento")
+            var precio = st.getFloat("precio")
+            var descuento = st.getFloat("descuento")
 
             artRtn = Articulos(cod_art, ref_art, denomina, precio, descuento)
         }
@@ -64,13 +64,13 @@ class ArticulosDAOImpl : ArticulosDAO {
         var query = "insert into articulos values (?, ?, ?, ?, ?)"
 
         var ps = conexion.getPreparedStatement(query)
-        var st = ps?.executeUpdate()
 
         ps?.setString(1,articulo.cod_art)
         ps?.setString(2,articulo.ref_art)
         ps?.setString(3, articulo.denomina)
-        ps?.setInt(4, articulo.precio)
-        ps?.setInt(5, articulo.descuento)
+        ps?.setFloat(4, articulo.precio)
+        ps?.setFloat(5, articulo.descuento)
+        var st = ps?.executeUpdate()
 
         ps?.close()
         conexion.desconectar()
@@ -90,8 +90,8 @@ class ArticulosDAOImpl : ArticulosDAO {
             ps?.setString(1,i.cod_art)
             ps?.setString(2,i.ref_art)
             ps?.setString(3, i.denomina)
-            ps?.setInt(4, i.precio)
-            ps?.setInt(5, i.descuento)
+            ps?.setFloat(4, i.precio)
+            ps?.setFloat(5, i.descuento)
             var st = ps?.executeUpdate()
         }
 
@@ -109,8 +109,8 @@ class ArticulosDAOImpl : ArticulosDAO {
         var st = ps?.executeUpdate()
 
         ps?.setString(1,articulo.denomina)
-        ps?.setInt(2, articulo.precio)
-        ps?.setInt(3, articulo.descuento)
+        ps?.setFloat(2, articulo.precio)
+        ps?.setFloat(3, articulo.descuento)
         ps?.setString(4, articulo.cod_art)
         ps?.setString(5, articulo.ref_art)
 
