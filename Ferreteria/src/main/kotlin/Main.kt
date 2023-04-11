@@ -1,7 +1,6 @@
 import Articulos.Articulos
 import Articulos.ArticulosDAOImpl
 import Compras.ComprasDAOImpl
-import Suministros.SuministrosDAOImpl
 
 fun main() {
 
@@ -77,7 +76,7 @@ fun main() {
                     println("Para borrar un registro necesitas introducir la referencia del artículo: ")
                     var ref_art = readln()
                     test2.eliminarCompraByart(cod_art,ref_art)
-                    test.eliminarArticulo(cod_art,ref_art)
+                    test.`eliminarArticuloByCod-Y-Ref_Art`(cod_art,ref_art)
                     var art = test.getArticulos()
                     for (i in art){
                         println(i.toString())

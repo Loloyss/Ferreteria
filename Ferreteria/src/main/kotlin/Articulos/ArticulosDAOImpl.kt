@@ -119,7 +119,7 @@ class ArticulosDAOImpl : ArticulosDAO {
 
         return st == 1
     }
-    override fun eliminarArticulo(cod_art :String,ref_art:String): Boolean {
+    override fun `eliminarArticuloByCod-Y-Ref_Art`(cod_art :String, ref_art:String): Boolean {
         conexion.conectar()
 
         val query = "DELETE FROM articulos WHERE cod_art = ? AND cod_ref = ?"
