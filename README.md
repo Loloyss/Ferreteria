@@ -20,6 +20,9 @@ git clone https://github.com/Loloyss/Ferreteria/
 
 4. Importar la base de datos ferreteria.sql a la base de datos creada en el paso anterior. Para ello, se puede utilizar el cliente de MySQL o una herramienta de gestión de bases de datos como phpMyAdmin. El archivo ferreteria.sql se encuentra en la raíz del repositorio.
 
+## Diseño de la base de datos
+
+<img src="https://github.com/Loloyss/Ferreteria/blob/main/Diagrama%20Base%20de%20Datos%20Ferreteria.png" width="50%"/> 
 
 ## Uso
 
