@@ -7,6 +7,9 @@ Para ejecutar este proyecto, es necesario tener instalado lo siguiente:
 * Java Development Kit (JDK) versión 8 o superior
 * Kotlin Compiler
 * Base de datos MariaDB
+* Xampp	
+* GitHub Desktop	
+
 
 ## Instalación
 1. Clonar el repositorio a través del comando:
