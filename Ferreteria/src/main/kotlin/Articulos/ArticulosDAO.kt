@@ -6,5 +6,5 @@ interface ArticulosDAO {
     fun insertArticulo(articulo:Articulos):Boolean
     fun insertArrArticulo(arrArticulo: ArrayList<Articulos>):Boolean
     fun modificarArticulo(articulo: Articulos): Boolean
-    fun `eliminarArticuloByCod-Y-Ref_Art`(cod_art :String, ref_art:String): Boolean
+    fun eliminarArticulo(cod_art :String,ref_art:String): Boolean
 }

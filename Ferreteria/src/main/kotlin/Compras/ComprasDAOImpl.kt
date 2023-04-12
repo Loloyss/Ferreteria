@@ -110,15 +110,15 @@ class ComprasDAOImpl : ComprasDAO {
     override fun eliminarCompraByart(cod_art:String,ref_art:String):Boolean{
         conexion.conectar()
 
-        val query = "DELETE FROM compras WHERE cod_art = ? AND cod_ref = ?"
+        val query = "DELETE FROM compras WHERE cod_art = ? AND referencia = ?"
 
         var ps = conexion.getPreparedStatement(query)
-        var st = ps?.executeUpdate()
+
 
         ps?.setString(1,cod_art)
         ps?.setString(2,ref_art)
 
-
+        var st = ps?.executeUpdate()
         ps?.close()
         conexion.desconectar()
 

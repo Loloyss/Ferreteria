@@ -103,10 +103,9 @@ class ArticulosDAOImpl : ArticulosDAO {
     override fun modificarArticulo(articulo: Articulos): Boolean {
         conexion.conectar()
 
-        val query = "UPDATE articulos SET denominacion = ? , precio = ? , descuento = ? WHERE cod_art = ? AND cod_ref = ?"
+        val query = "UPDATE articulos SET denomina = ? , precio = ? , descuento = ? WHERE cod_art = ? AND ref_art = ?"
 
         var ps = conexion.getPreparedStatement(query)
-        var st = ps?.executeUpdate()
 
         ps?.setString(1,articulo.denomina)
         ps?.setFloat(2, articulo.precio)
@@ -114,23 +113,23 @@ class ArticulosDAOImpl : ArticulosDAO {
         ps?.setString(4, articulo.cod_art)
         ps?.setString(5, articulo.ref_art)
 
+        var st = ps?.executeUpdate()
         ps?.close()
         conexion.desconectar()
 
         return st == 1
     }
-    override fun `eliminarArticuloByCod-Y-Ref_Art`(cod_art :String, ref_art:String): Boolean {
+    override fun eliminarArticulo(cod_art :String,ref_art:String): Boolean {
         conexion.conectar()
 
-        val query = "DELETE FROM articulos WHERE cod_art = ? AND cod_ref = ?"
+        val query = "DELETE FROM articulos WHERE cod_art = ? AND ref_art = ?"
 
         var ps = conexion.getPreparedStatement(query)
-        var st = ps?.executeUpdate()
 
         ps?.setString(1,cod_art)
         ps?.setString(2,ref_art)
 
-
+        var st = ps?.executeUpdate()
         ps?.close()
         conexion.desconectar()
 
